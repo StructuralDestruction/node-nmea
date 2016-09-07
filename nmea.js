@@ -57,8 +57,8 @@ exports.encoders[HDT.TYPE] = HDT;
 exports.encoders[GGA.TYPE] = GGA;
 exports.encoders[HDM.TYPE] = HDM;
 
-exports.parse = function (line) {
-  if (validLine(line)) {
+exports.parse = function (line, enableChecksum) {
+  if (!enableChecksum || validLine(line)) {
     var fields = line.split('*')[0].split(','),
       talker_id,
       msg_fmt;
